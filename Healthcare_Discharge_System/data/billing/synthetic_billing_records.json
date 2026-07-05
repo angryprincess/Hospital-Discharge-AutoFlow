@@ -1,0 +1,66 @@
+{
+  "billing_codes": [
+    {"code": "DM-HYP-001", "description": "Diabetes Mellitus with Hypertension", "base_charge": 12000, "ward": "General"},
+    {"code": "MAT-CSEC-002", "description": "Maternity - Cesarean Section", "base_charge": 45000, "ward": "Maternity"},
+    {"code": "CARD-AMI-003", "description": "Acute Myocardial Infarction with PCI", "base_charge": 120000, "ward": "Cardiology"},
+    {"code": "ORTH-FX-004", "description": "Fracture ORIF Surgery", "base_charge": 55000, "ward": "Orthopedics"},
+    {"code": "NEURO-CVA-005", "description": "Ischemic Stroke Management", "base_charge": 75000, "ward": "Neurology"},
+    {"code": "PULM-CAP-006", "description": "Community Acquired Pneumonia", "base_charge": 18000, "ward": "Pulmonology"},
+    {"code": "GASTRO-PANC-007", "description": "Acute Pancreatitis Management", "base_charge": 35000, "ward": "Gastroenterology"},
+    {"code": "GEN-DENG-008", "description": "Dengue Fever with Thrombocytopenia", "base_charge": 15000, "ward": "General"},
+    {"code": "NEPH-CKD-009", "description": "Chronic Kidney Disease Management", "base_charge": 22000, "ward": "Nephrology"},
+    {"code": "ENDO-HYPER-010", "description": "Hyperthyroidism - Graves Disease", "base_charge": 20000, "ward": "Endocrinology"}
+  ],
+  "drug_catalog": [
+    {"generic_name": "Paracetamol", "code": "DRUG-PARA-500", "unit_price": 2.5, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Amoxicillin + Clavulanate", "code": "DRUG-AUGM-625", "unit_price": 28.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30042090"},
+    {"generic_name": "Telmisartan", "code": "DRUG-TELM-40", "unit_price": 12.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Metformin", "code": "DRUG-METF-500", "unit_price": 5.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Ciprofloxacin", "code": "DRUG-CIPRO-500", "unit_price": 15.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30042090"},
+    {"generic_name": "Pantoprazole", "code": "DRUG-PANTO-40", "unit_price": 8.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Aspirin", "code": "DRUG-ASPI-75", "unit_price": 3.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Atorvastatin", "code": "DRUG-ATOR-40", "unit_price": 22.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Metoprolol", "code": "DRUG-METO-25", "unit_price": 10.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Isosorbide Mononitrate", "code": "DRUG-ISOM-2.6", "unit_price": 18.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Calcium Carbonate + Vitamin D3", "code": "DRUG-CALC-500", "unit_price": 7.5, "unit": "tablet", "gst_percent": 5, "hsn_code": "30049099"},
+    {"generic_name": "Rosuvastatin", "code": "DRUG-ROSU-10", "unit_price": 25.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Losartan", "code": "DRUG-LOSA-50", "unit_price": 14.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Azithromycin", "code": "DRUG-AZIT-500", "unit_price": 35.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30042090"},
+    {"generic_name": "N-Acetylcysteine", "code": "DRUG-NAC-600", "unit_price": 20.0, "unit": "sachet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Pancrelipase", "code": "DRUG-PANC-10000", "unit_price": 45.0, "unit": "capsule", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Carbimazole", "code": "DRUG-CARB-10", "unit_price": 8.5, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Clarithromycin", "code": "DRUG-CLAR-500", "unit_price": 40.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30042090"},
+    {"generic_name": "Glipizide", "code": "DRUG-GLIP-5", "unit_price": 6.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},
+    {"generic_name": "Sitagliptin", "code": "DRUG-SITA-100", "unit_price": 85.0, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"}
+  ],
+  "invoices": [
+    {
+      "invoice_id": "INV-2026-P001",
+      "patient_id": "P001",
+      "billing_code": "DM-HYP-001",
+      "base_charge": 12000,
+      "medicines": [
+        {"generic_name": "Amoxicillin + Clavulanate", "code": "DRUG-AUGM-625", "quantity": 14, "unit_price": 28.0, "total": 392.0},
+        {"generic_name": "Telmisartan", "code": "DRUG-TELM-40", "quantity": 30, "unit_price": 12.0, "total": 360.0},
+        {"generic_name": "Metformin", "code": "DRUG-METF-500", "quantity": 60, "unit_price": 5.0, "total": 300.0}
+      ],
+      "medicine_total": 1052.0,
+      "tax_amount": 126.24,
+      "grand_total": 13178.24,
+      "status": "validated",
+      "created_at": "2026-07-05T10:30:00"
+    }
+  ],
+  "service_charges": {
+    "consultation": 500,
+    "nursing_per_day": 800,
+    "lab_test_basic": 300,
+    "lab_test_advanced": 1500,
+    "xray": 500,
+    "ecg": 300,
+    "echo": 2500,
+    "mri": 8000,
+    "ct_scan": 5000,
+    "operation_theatre": 15000
+  }
+}

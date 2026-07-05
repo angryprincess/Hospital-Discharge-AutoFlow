@@ -1,0 +1,2403 @@
+[
+  {
+    "log_id": "4E8A87C3",
+    "timestamp": "2026-07-06T00:54:21.060975",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706005421-0FC2"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D92FB0F6",
+    "timestamp": "2026-07-06T00:54:21.064128",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706005421-0FC2"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "352F334F",
+    "timestamp": "2026-07-06T00:54:21.082993",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706005421-0FC2"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "01D00250",
+    "timestamp": "2026-07-06T00:54:21.102546",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P999",
+      "workflow_id": "WF-20260706005421-9048"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P999",
+    "duration_ms": null
+  },
+  {
+    "log_id": "E1120958",
+    "timestamp": "2026-07-06T00:54:21.122659",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706005421-CD4E"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "12E0D7FC",
+    "timestamp": "2026-07-06T00:54:21.140757",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706005421-CD4E"
+    },
+    "output_summary": "Packet DISCH-P004-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "7A15E2E3",
+    "timestamp": "2026-07-06T00:54:21.156624",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706005421-CD4E"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "688312E1",
+    "timestamp": "2026-07-06T01:09:27.803530",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706010927-08F4"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B64301BA",
+    "timestamp": "2026-07-06T01:09:27.810406",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706010927-08F4"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "EEF1EFC0",
+    "timestamp": "2026-07-06T01:09:27.842984",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706010927-08F4"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "C5233FF4",
+    "timestamp": "2026-07-06T01:10:14.230492",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011014-BA18"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "5EB7A460",
+    "timestamp": "2026-07-06T01:10:14.240537",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011014-BA18"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6754E40A",
+    "timestamp": "2026-07-06T01:10:14.272320",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706011014-BA18"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "58343C3A",
+    "timestamp": "2026-07-06T01:10:28.381139",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011028-AB19"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "1FA9113F",
+    "timestamp": "2026-07-06T01:10:28.388143",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011028-AB19"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "0DE4D4EC",
+    "timestamp": "2026-07-06T01:10:28.416137",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706011028-AB19"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "DA366016",
+    "timestamp": "2026-07-06T01:11:23.418244",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "doctor",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011123-C28F"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "FDBC7C39",
+    "timestamp": "2026-07-06T01:11:23.428238",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "doctor",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011123-C28F"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "23C7316B",
+    "timestamp": "2026-07-06T01:11:23.458355",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "doctor",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706011123-C28F"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "FAFD0B6E",
+    "timestamp": "2026-07-06T01:12:54.765915",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011254-1D15"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "96E100C1",
+    "timestamp": "2026-07-06T01:12:54.768063",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011254-1D15"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "FCCFD305",
+    "timestamp": "2026-07-06T01:12:54.786447",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706011254-1D15"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "AF495781",
+    "timestamp": "2026-07-06T01:13:01.979178",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011301-8672"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "0EBB6583",
+    "timestamp": "2026-07-06T01:13:01.987161",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706011301-8672"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "F25FF8D8",
+    "timestamp": "2026-07-06T01:13:02.016418",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706011301-8672"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6F75E8D7",
+    "timestamp": "2026-07-06T01:25:40.692904",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706012540-A082"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "C3691E90",
+    "timestamp": "2026-07-06T01:25:40.696983",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706012540-A082"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "06F18626",
+    "timestamp": "2026-07-06T01:25:40.723597",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706012540-A082"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "034C02DE",
+    "timestamp": "2026-07-06T01:25:40.755369",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P999",
+      "workflow_id": "WF-20260706012540-5238"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P999",
+    "duration_ms": null
+  },
+  {
+    "log_id": "7244A664",
+    "timestamp": "2026-07-06T01:25:40.778616",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706012540-ADAA"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "E52776D3",
+    "timestamp": "2026-07-06T01:25:40.799499",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706012540-ADAA"
+    },
+    "output_summary": "Packet DISCH-P004-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "CF94F185",
+    "timestamp": "2026-07-06T01:25:40.819996",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706012540-ADAA"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "5A63D86F",
+    "timestamp": "2026-07-06T01:26:48.861406",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706012648-E29A"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "7C238048",
+    "timestamp": "2026-07-06T01:26:48.896674",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706012648-E29A"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "7A17C852",
+    "timestamp": "2026-07-06T01:26:48.925621",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706012648-E29A"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "EA1F3BFD",
+    "timestamp": "2026-07-06T01:28:32.922977",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706012832-FAD5"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "DD94E0E5",
+    "timestamp": "2026-07-06T01:28:32.964678",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706012832-FAD5"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "3AD0DA10",
+    "timestamp": "2026-07-06T01:28:32.992618",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706012832-FAD5"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "579C89DA",
+    "timestamp": "2026-07-06T01:52:33.851001",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015233-0441"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "BFE1FDE2",
+    "timestamp": "2026-07-06T01:52:33.853170",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015233-0441"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "4311007D",
+    "timestamp": "2026-07-06T01:52:33.875178",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015233-0441"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8CEE261B",
+    "timestamp": "2026-07-06T01:52:33.916163",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P999",
+      "workflow_id": "WF-20260706015233-E241"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P999",
+    "duration_ms": null
+  },
+  {
+    "log_id": "EAC8AEE6",
+    "timestamp": "2026-07-06T01:52:33.947642",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706015233-A56A"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "A30879A1",
+    "timestamp": "2026-07-06T01:52:33.970484",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706015233-A56A"
+    },
+    "output_summary": "Packet DISCH-P004-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "10D69D4B",
+    "timestamp": "2026-07-06T01:52:33.992121",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706015233-A56A"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D9290E46",
+    "timestamp": "2026-07-06T01:56:02.572153",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015602-7AE4"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B37288EF",
+    "timestamp": "2026-07-06T01:56:02.601252",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015602-7AE4"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6D7499AE",
+    "timestamp": "2026-07-06T01:56:02.612906",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015602-7AE4"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8FBE4D99",
+    "timestamp": "2026-07-06T01:56:43.439437",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015643-3EE7"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "51311D3B",
+    "timestamp": "2026-07-06T01:56:43.470107",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015643-3EE7"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "E67E8E01",
+    "timestamp": "2026-07-06T01:56:43.484761",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015643-3EE7"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D2A32108",
+    "timestamp": "2026-07-06T01:56:54.600599",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015654-E569"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "59E8B8DB",
+    "timestamp": "2026-07-06T01:56:54.631578",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015654-E569"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "ACA3278F",
+    "timestamp": "2026-07-06T01:56:54.647566",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015654-E569"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6AA1F037",
+    "timestamp": "2026-07-06T01:57:23.448157",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015723-A136"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "0FB90CC0",
+    "timestamp": "2026-07-06T01:57:23.472505",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015723-A136"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6EBA8132",
+    "timestamp": "2026-07-06T01:57:23.493864",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015723-A136"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "2FB448C0",
+    "timestamp": "2026-07-06T01:57:35.850599",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015735-B397"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B066E507",
+    "timestamp": "2026-07-06T01:57:35.868611",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015735-B397"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "92A511FF",
+    "timestamp": "2026-07-06T01:57:35.885782",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015735-B397"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8D59D65C",
+    "timestamp": "2026-07-06T01:58:00.154459",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015800-732C"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8FDB1C86",
+    "timestamp": "2026-07-06T01:58:00.177372",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015800-732C"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D8ABCBB5",
+    "timestamp": "2026-07-06T01:58:00.195981",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015800-732C"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "9B72DDC4",
+    "timestamp": "2026-07-06T01:58:11.086587",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706015811-DABB"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6C75E388",
+    "timestamp": "2026-07-06T01:58:11.114310",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706015811-DABB"
+    },
+    "output_summary": "Packet DISCH-P002-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "BF58A191",
+    "timestamp": "2026-07-06T01:58:11.130746",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706015811-DABB"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "09D39E62",
+    "timestamp": "2026-07-06T01:58:35.394158",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706015835-AFA5"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "44FE131C",
+    "timestamp": "2026-07-06T01:58:35.431355",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706015835-AFA5"
+    },
+    "output_summary": "Packet DISCH-P004-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8E5257EC",
+    "timestamp": "2026-07-06T01:58:35.449028",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706015835-AFA5"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "5B4D1FC6",
+    "timestamp": "2026-07-06T01:59:32.508733",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P010",
+      "workflow_id": "WF-20260706015932-38C6"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P010",
+    "duration_ms": null
+  },
+  {
+    "log_id": "A0EF087E",
+    "timestamp": "2026-07-06T01:59:32.546353",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P010",
+      "workflow_id": "WF-20260706015932-38C6"
+    },
+    "output_summary": "Packet DISCH-P010-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P010",
+    "duration_ms": null
+  },
+  {
+    "log_id": "2A91598F",
+    "timestamp": "2026-07-06T01:59:32.566055",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706015932-38C6"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P010",
+    "duration_ms": null
+  },
+  {
+    "log_id": "75F7524A",
+    "timestamp": "2026-07-06T01:59:54.602992",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015954-812A"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "EEA7243E",
+    "timestamp": "2026-07-06T01:59:54.633058",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706015954-812A"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "99E4F4CA",
+    "timestamp": "2026-07-06T01:59:54.651546",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706015954-812A"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "9173BBC5",
+    "timestamp": "2026-07-06T02:00:08.493567",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706020008-305F"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "84DC80BD",
+    "timestamp": "2026-07-06T02:00:08.520729",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706020008-305F"
+    },
+    "output_summary": "Packet DISCH-P002-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "DF3D0A36",
+    "timestamp": "2026-07-06T02:00:08.542859",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020008-305F"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "1018FE81",
+    "timestamp": "2026-07-06T02:00:30.940770",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P003",
+      "workflow_id": "WF-20260706020030-6E44"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "81D15B60",
+    "timestamp": "2026-07-06T02:00:30.973036",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P003",
+      "workflow_id": "WF-20260706020030-6E44"
+    },
+    "output_summary": "Packet DISCH-P003-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "33FAC950",
+    "timestamp": "2026-07-06T02:00:30.993682",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020030-6E44"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "2D53F4D7",
+    "timestamp": "2026-07-06T02:01:58.207021",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706020158-265C"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "4B9A5BC2",
+    "timestamp": "2026-07-06T02:01:58.236356",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706020158-265C"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8900BBC6",
+    "timestamp": "2026-07-06T02:01:58.254225",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706020158-265C"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "07F2347F",
+    "timestamp": "2026-07-06T02:02:30.803027",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706020230-5DB1"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "2FEB4C13",
+    "timestamp": "2026-07-06T02:02:30.836046",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706020230-5DB1"
+    },
+    "output_summary": "Packet DISCH-P002-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "7C6560EB",
+    "timestamp": "2026-07-06T02:02:30.853453",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020230-5DB1"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "523055BD",
+    "timestamp": "2026-07-06T02:03:42.990646",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706020342-B4D0"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B7E10184",
+    "timestamp": "2026-07-06T02:03:43.022682",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706020342-B4D0"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "00147AC7",
+    "timestamp": "2026-07-06T02:03:43.043136",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706020342-B4D0"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "800ED863",
+    "timestamp": "2026-07-06T02:07:20.754689",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P003",
+      "workflow_id": "WF-20260706020720-40F7"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "72479EB5",
+    "timestamp": "2026-07-06T02:07:20.786752",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P003",
+      "workflow_id": "WF-20260706020720-40F7"
+    },
+    "output_summary": "Packet DISCH-P003-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "5CF6CA5F",
+    "timestamp": "2026-07-06T02:07:20.804183",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020720-40F7"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "1B7FCBAA",
+    "timestamp": "2026-07-06T02:07:37.070122",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706020737-269E"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "711400D8",
+    "timestamp": "2026-07-06T02:07:37.112054",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706020737-269E"
+    },
+    "output_summary": "Packet DISCH-P004-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B5A5A0E7",
+    "timestamp": "2026-07-06T02:07:37.144455",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020737-269E"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "84C1C59E",
+    "timestamp": "2026-07-06T02:07:59.066745",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P005",
+      "workflow_id": "WF-20260706020759-C16C"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P005",
+    "duration_ms": null
+  },
+  {
+    "log_id": "89EBA577",
+    "timestamp": "2026-07-06T02:07:59.103077",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P005",
+      "workflow_id": "WF-20260706020759-C16C"
+    },
+    "output_summary": "Packet DISCH-P005-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P005",
+    "duration_ms": null
+  },
+  {
+    "log_id": "A27C3D86",
+    "timestamp": "2026-07-06T02:07:59.119232",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020759-C16C"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P005",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B3897963",
+    "timestamp": "2026-07-06T02:08:15.094591",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P006",
+      "workflow_id": "WF-20260706020815-AA3F"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P006",
+    "duration_ms": null
+  },
+  {
+    "log_id": "E29B249F",
+    "timestamp": "2026-07-06T02:08:15.129716",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P006",
+      "workflow_id": "WF-20260706020815-AA3F"
+    },
+    "output_summary": "Packet DISCH-P006-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P006",
+    "duration_ms": null
+  },
+  {
+    "log_id": "2579BF39",
+    "timestamp": "2026-07-06T02:08:15.159212",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020815-AA3F"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P006",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B707BCE6",
+    "timestamp": "2026-07-06T02:08:27.217030",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P007",
+      "workflow_id": "WF-20260706020827-165F"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P007",
+    "duration_ms": null
+  },
+  {
+    "log_id": "AB6F8B55",
+    "timestamp": "2026-07-06T02:08:27.248813",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P007",
+      "workflow_id": "WF-20260706020827-165F"
+    },
+    "output_summary": "Packet DISCH-P007-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P007",
+    "duration_ms": null
+  },
+  {
+    "log_id": "667851BC",
+    "timestamp": "2026-07-06T02:08:27.267194",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020827-165F"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P007",
+    "duration_ms": null
+  },
+  {
+    "log_id": "94089F66",
+    "timestamp": "2026-07-06T02:08:36.645670",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P008",
+      "workflow_id": "WF-20260706020836-0853"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P008",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D56B65FF",
+    "timestamp": "2026-07-06T02:08:36.679656",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P008",
+      "workflow_id": "WF-20260706020836-0853"
+    },
+    "output_summary": "Packet DISCH-P008-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P008",
+    "duration_ms": null
+  },
+  {
+    "log_id": "CA2179CD",
+    "timestamp": "2026-07-06T02:08:36.699214",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020836-0853"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P008",
+    "duration_ms": null
+  },
+  {
+    "log_id": "FDB978F5",
+    "timestamp": "2026-07-06T02:08:45.605477",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P009",
+      "workflow_id": "WF-20260706020845-027A"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P009",
+    "duration_ms": null
+  },
+  {
+    "log_id": "309E2DA0",
+    "timestamp": "2026-07-06T02:08:45.646330",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P009",
+      "workflow_id": "WF-20260706020845-027A"
+    },
+    "output_summary": "Packet DISCH-P009-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P009",
+    "duration_ms": null
+  },
+  {
+    "log_id": "712E1DAB",
+    "timestamp": "2026-07-06T02:08:45.666595",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020845-027A"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P009",
+    "duration_ms": null
+  },
+  {
+    "log_id": "9A642490",
+    "timestamp": "2026-07-06T02:08:55.762601",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P010",
+      "workflow_id": "WF-20260706020855-1CFD"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P010",
+    "duration_ms": null
+  },
+  {
+    "log_id": "34AFB3F5",
+    "timestamp": "2026-07-06T02:08:55.796561",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P010",
+      "workflow_id": "WF-20260706020855-1CFD"
+    },
+    "output_summary": "Packet DISCH-P010-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P010",
+    "duration_ms": null
+  },
+  {
+    "log_id": "8C27E510",
+    "timestamp": "2026-07-06T02:08:55.817335",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020855-1CFD"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P010",
+    "duration_ms": null
+  },
+  {
+    "log_id": "56986D8B",
+    "timestamp": "2026-07-06T02:09:05.601242",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706020905-3CD6"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "9BE79EA4",
+    "timestamp": "2026-07-06T02:09:05.636465",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706020905-3CD6"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "EB24A11B",
+    "timestamp": "2026-07-06T02:09:05.661813",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706020905-3CD6"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "133457FA",
+    "timestamp": "2026-07-06T02:09:53.453001",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706020953-2676"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "65AC1D5A",
+    "timestamp": "2026-07-06T02:09:53.497525",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706020953-2676"
+    },
+    "output_summary": "Packet DISCH-P002-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "825651FF",
+    "timestamp": "2026-07-06T02:09:53.523257",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706020953-2676"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "E7EB6D99",
+    "timestamp": "2026-07-06T02:11:11.770209",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706021111-07AC"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "623B19A9",
+    "timestamp": "2026-07-06T02:11:11.806278",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "patient_id": "P001",
+      "workflow_id": "WF-20260706021111-07AC"
+    },
+    "output_summary": "Packet DISCH-P001-20260706 generated. Approval needed: True",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D8EF8AEC",
+    "timestamp": "2026-07-06T02:11:11.836383",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "WARNING",
+    "input_data": {
+      "workflow_id": "WF-20260706021111-07AC"
+    },
+    "output_summary": "Workflow partial. Steps: 10",
+    "reason": null,
+    "patient_id": "P001",
+    "duration_ms": null
+  },
+  {
+    "log_id": "0AECE3D5",
+    "timestamp": "2026-07-06T02:11:37.187436",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706021137-5477"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "7EAA5BEB",
+    "timestamp": "2026-07-06T02:11:37.218016",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P002",
+      "workflow_id": "WF-20260706021137-5477"
+    },
+    "output_summary": "Packet DISCH-P002-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "38F61C01",
+    "timestamp": "2026-07-06T02:11:37.237303",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021137-5477"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P002",
+    "duration_ms": null
+  },
+  {
+    "log_id": "3F151A50",
+    "timestamp": "2026-07-06T02:12:02.238722",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P003",
+      "workflow_id": "WF-20260706021202-59B6"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D7537AF9",
+    "timestamp": "2026-07-06T02:12:02.292610",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P003",
+      "workflow_id": "WF-20260706021202-59B6"
+    },
+    "output_summary": "Packet DISCH-P003-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "F17A2D9E",
+    "timestamp": "2026-07-06T02:12:02.325801",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021202-59B6"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P003",
+    "duration_ms": null
+  },
+  {
+    "log_id": "964F356E",
+    "timestamp": "2026-07-06T02:12:24.041936",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706021224-0276"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "B452BA5B",
+    "timestamp": "2026-07-06T02:12:24.080848",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P004",
+      "workflow_id": "WF-20260706021224-0276"
+    },
+    "output_summary": "Packet DISCH-P004-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "37C29581",
+    "timestamp": "2026-07-06T02:12:24.100180",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021224-0276"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P004",
+    "duration_ms": null
+  },
+  {
+    "log_id": "D7EC5EDF",
+    "timestamp": "2026-07-06T02:12:40.999467",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P005",
+      "workflow_id": "WF-20260706021240-1BE9"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P005",
+    "duration_ms": null
+  },
+  {
+    "log_id": "6653FD39",
+    "timestamp": "2026-07-06T02:12:41.036489",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P005",
+      "workflow_id": "WF-20260706021240-1BE9"
+    },
+    "output_summary": "Packet DISCH-P005-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P005",
+    "duration_ms": null
+  },
+  {
+    "log_id": "BF956A3C",
+    "timestamp": "2026-07-06T02:12:41.066639",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021240-1BE9"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P005",
+    "duration_ms": null
+  },
+  {
+    "log_id": "00E29F64",
+    "timestamp": "2026-07-06T02:12:57.252073",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P006",
+      "workflow_id": "WF-20260706021257-6E75"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P006",
+    "duration_ms": null
+  },
+  {
+    "log_id": "FDF84C32",
+    "timestamp": "2026-07-06T02:12:57.287566",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P006",
+      "workflow_id": "WF-20260706021257-6E75"
+    },
+    "output_summary": "Packet DISCH-P006-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P006",
+    "duration_ms": null
+  },
+  {
+    "log_id": "22F86467",
+    "timestamp": "2026-07-06T02:12:57.312990",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021257-6E75"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P006",
+    "duration_ms": null
+  },
+  {
+    "log_id": "A2745258",
+    "timestamp": "2026-07-06T02:13:23.232779",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P007",
+      "workflow_id": "WF-20260706021323-AE4E"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P007",
+    "duration_ms": null
+  },
+  {
+    "log_id": "1B61BD09",
+    "timestamp": "2026-07-06T02:13:23.275753",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P007",
+      "workflow_id": "WF-20260706021323-AE4E"
+    },
+    "output_summary": "Packet DISCH-P007-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P007",
+    "duration_ms": null
+  },
+  {
+    "log_id": "558D4AFF",
+    "timestamp": "2026-07-06T02:13:23.301717",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021323-AE4E"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P007",
+    "duration_ms": null
+  },
+  {
+    "log_id": "252EAADB",
+    "timestamp": "2026-07-06T02:13:36.897489",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P008",
+      "workflow_id": "WF-20260706021336-CF12"
+    },
+    "output_summary": "Workflow started",
+    "reason": null,
+    "patient_id": "P008",
+    "duration_ms": null
+  },
+  {
+    "log_id": "5C01F8AD",
+    "timestamp": "2026-07-06T02:13:36.932189",
+    "server": "Agent",
+    "tool": "generate_discharge_packet",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "patient_id": "P008",
+      "workflow_id": "WF-20260706021336-CF12"
+    },
+    "output_summary": "Packet DISCH-P008-20260706 generated. Approval needed: False",
+    "reason": null,
+    "patient_id": "P008",
+    "duration_ms": null
+  },
+  {
+    "log_id": "E3ACE990",
+    "timestamp": "2026-07-06T02:13:36.953445",
+    "server": "Agent",
+    "tool": "run_discharge_workflow",
+    "role": "administrator",
+    "user_id": null,
+    "status": "SUCCESS",
+    "input_data": {
+      "workflow_id": "WF-20260706021336-CF12"
+    },
+    "output_summary": "Workflow success. Steps: 10",
+    "reason": null,
+    "patient_id": "P008",
+    "duration_ms": null
+  }
+]

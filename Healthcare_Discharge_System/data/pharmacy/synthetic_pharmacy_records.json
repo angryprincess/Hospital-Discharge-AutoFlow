@@ -1,0 +1,83 @@
+{
+  "brand_to_generic_map": {
+    "Augmentin": {"generic": "Amoxicillin + Clavulanate", "drug_class": "Antibiotic", "category": "Penicillin-based"},
+    "Crocin": {"generic": "Paracetamol", "drug_class": "Analgesic/Antipyretic", "category": "Non-opioid analgesic"},
+    "Dolo": {"generic": "Paracetamol", "drug_class": "Analgesic/Antipyretic", "category": "Non-opioid analgesic"},
+    "Telma": {"generic": "Telmisartan", "drug_class": "Antihypertensive", "category": "ARB"},
+    "Glycomet": {"generic": "Metformin", "drug_class": "Antidiabetic", "category": "Biguanide"},
+    "Cifran": {"generic": "Ciprofloxacin", "drug_class": "Antibiotic", "category": "Fluoroquinolone"},
+    "Pantop": {"generic": "Pantoprazole", "drug_class": "Proton Pump Inhibitor", "category": "Acid reducer"},
+    "Ecosprin": {"generic": "Aspirin", "drug_class": "Antiplatelet/NSAID", "category": "Salicylate"},
+    "Atorva": {"generic": "Atorvastatin", "drug_class": "Lipid-lowering", "category": "Statin"},
+    "Metolar": {"generic": "Metoprolol", "drug_class": "Beta Blocker", "category": "Cardioselective"},
+    "Nitrocontin": {"generic": "Isosorbide Mononitrate", "drug_class": "Antianginal", "category": "Nitrate"},
+    "Shelcal": {"generic": "Calcium Carbonate + Vitamin D3", "drug_class": "Supplement", "category": "Mineral/Vitamin"},
+    "Rosuvas": {"generic": "Rosuvastatin", "drug_class": "Lipid-lowering", "category": "Statin"},
+    "Losar": {"generic": "Losartan", "drug_class": "Antihypertensive", "category": "ARB"},
+    "Zithro": {"generic": "Azithromycin", "drug_class": "Antibiotic", "category": "Macrolide"},
+    "Mucinac": {"generic": "N-Acetylcysteine", "drug_class": "Mucolytic", "category": "Expectorant"},
+    "Creon": {"generic": "Pancrelipase", "drug_class": "Digestive Enzyme", "category": "Enzyme replacement"},
+    "Thyrostat": {"generic": "Carbimazole", "drug_class": "Antithyroid", "category": "Thionamide"},
+    "Amoxil": {"generic": "Amoxicillin", "drug_class": "Antibiotic", "category": "Penicillin-based"},
+    "Taxim": {"generic": "Cefotaxime", "drug_class": "Antibiotic", "category": "Cephalosporin"}
+  },
+  "inventory": [
+    {"medicine_id": "INV001", "generic_name": "Paracetamol", "brand_names": ["Crocin", "Dolo"], "stock_quantity": 500, "unit": "tablets", "min_threshold": 100, "stock_status": "in_stock", "price_per_unit": 2.5, "expiry_date": "2027-12-31"},
+    {"medicine_id": "INV002", "generic_name": "Amoxicillin + Clavulanate", "brand_names": ["Augmentin"], "stock_quantity": 45, "unit": "tablets", "min_threshold": 50, "stock_status": "low_stock", "price_per_unit": 28.0, "expiry_date": "2027-06-30"},
+    {"medicine_id": "INV003", "generic_name": "Telmisartan", "brand_names": ["Telma"], "stock_quantity": 200, "unit": "tablets", "min_threshold": 50, "stock_status": "in_stock", "price_per_unit": 12.0, "expiry_date": "2027-08-31"},
+    {"medicine_id": "INV004", "generic_name": "Metformin", "brand_names": ["Glycomet"], "stock_quantity": 0, "unit": "tablets", "min_threshold": 100, "stock_status": "out_of_stock", "price_per_unit": 5.0, "expiry_date": "2027-09-30"},
+    {"medicine_id": "INV005", "generic_name": "Ciprofloxacin", "brand_names": ["Cifran"], "stock_quantity": 150, "unit": "tablets", "min_threshold": 50, "stock_status": "in_stock", "price_per_unit": 15.0, "expiry_date": "2027-11-30"},
+    {"medicine_id": "INV006", "generic_name": "Pantoprazole", "brand_names": ["Pantop"], "stock_quantity": 300, "unit": "tablets", "min_threshold": 100, "stock_status": "in_stock", "price_per_unit": 8.0, "expiry_date": "2028-01-31"},
+    {"medicine_id": "INV007", "generic_name": "Aspirin", "brand_names": ["Ecosprin"], "stock_quantity": 250, "unit": "tablets", "min_threshold": 100, "stock_status": "in_stock", "price_per_unit": 3.0, "expiry_date": "2027-10-31"},
+    {"medicine_id": "INV008", "generic_name": "Atorvastatin", "brand_names": ["Atorva"], "stock_quantity": 180, "unit": "tablets", "min_threshold": 50, "stock_status": "in_stock", "price_per_unit": 22.0, "expiry_date": "2027-07-31"},
+    {"medicine_id": "INV009", "generic_name": "Metoprolol", "brand_names": ["Metolar"], "stock_quantity": 120, "unit": "tablets", "min_threshold": 50, "stock_status": "in_stock", "price_per_unit": 10.0, "expiry_date": "2027-12-31"},
+    {"medicine_id": "INV010", "generic_name": "Isosorbide Mononitrate", "brand_names": ["Nitrocontin"], "stock_quantity": 90, "unit": "tablets", "min_threshold": 30, "stock_status": "in_stock", "price_per_unit": 18.0, "expiry_date": "2027-05-31"},
+    {"medicine_id": "INV011", "generic_name": "Calcium Carbonate + Vitamin D3", "brand_names": ["Shelcal"], "stock_quantity": 30, "unit": "tablets", "min_threshold": 50, "stock_status": "low_stock", "price_per_unit": 7.5, "expiry_date": "2027-03-31"},
+    {"medicine_id": "INV012", "generic_name": "Rosuvastatin", "brand_names": ["Rosuvas"], "stock_quantity": 200, "unit": "tablets", "min_threshold": 50, "stock_status": "in_stock", "price_per_unit": 25.0, "expiry_date": "2027-09-30"},
+    {"medicine_id": "INV013", "generic_name": "Losartan", "brand_names": ["Losar"], "stock_quantity": 160, "unit": "tablets", "min_threshold": 50, "stock_status": "in_stock", "price_per_unit": 14.0, "expiry_date": "2027-11-30"},
+    {"medicine_id": "INV014", "generic_name": "Azithromycin", "brand_names": ["Zithro"], "stock_quantity": 0, "unit": "tablets", "min_threshold": 30, "stock_status": "out_of_stock", "price_per_unit": 35.0, "expiry_date": "2027-06-30"},
+    {"medicine_id": "INV015", "generic_name": "N-Acetylcysteine", "brand_names": ["Mucinac"], "stock_quantity": 80, "unit": "sachets", "min_threshold": 30, "stock_status": "in_stock", "price_per_unit": 20.0, "expiry_date": "2027-08-31"},
+    {"medicine_id": "INV016", "generic_name": "Pancrelipase", "brand_names": ["Creon"], "stock_quantity": 60, "unit": "capsules", "min_threshold": 20, "stock_status": "in_stock", "price_per_unit": 45.0, "expiry_date": "2027-10-31"},
+    {"medicine_id": "INV017", "generic_name": "Carbimazole", "brand_names": ["Thyrostat"], "stock_quantity": 100, "unit": "tablets", "min_threshold": 30, "stock_status": "in_stock", "price_per_unit": 8.5, "expiry_date": "2028-02-28"},
+    {"medicine_id": "INV018", "generic_name": "Amoxicillin", "brand_names": ["Amoxil"], "stock_quantity": 0, "unit": "tablets", "min_threshold": 100, "stock_status": "out_of_stock", "price_per_unit": 12.0, "expiry_date": "2027-07-31"},
+    {"medicine_id": "INV019", "generic_name": "Cefotaxime", "brand_names": ["Taxim"], "stock_quantity": 75, "unit": "vials", "min_threshold": 30, "stock_status": "in_stock", "price_per_unit": 120.0, "expiry_date": "2027-05-31"},
+    {"medicine_id": "INV020", "generic_name": "Clarithromycin", "brand_names": ["Claritek"], "stock_quantity": 55, "unit": "tablets", "min_threshold": 30, "stock_status": "in_stock", "price_per_unit": 40.0, "expiry_date": "2027-09-30"}
+  ],
+  "alternatives": [
+    {"for_generic": "Amoxicillin + Clavulanate", "drug_class": "Antibiotic", "alternatives": [
+      {"generic": "Cefuroxime", "brand": "Ceftin", "drug_class": "Antibiotic", "category": "Cephalosporin", "allergy_group": "Cephalosporin", "stock_status": "in_stock"},
+      {"generic": "Azithromycin", "brand": "Zithro", "drug_class": "Antibiotic", "category": "Macrolide", "allergy_group": "Macrolide", "stock_status": "out_of_stock"},
+      {"generic": "Doxycycline", "brand": "Doxrid", "drug_class": "Antibiotic", "category": "Tetracycline", "allergy_group": "Tetracycline", "stock_status": "in_stock"}
+    ]},
+    {"for_generic": "Metformin", "drug_class": "Antidiabetic", "alternatives": [
+      {"generic": "Glipizide", "brand": "Minidiab", "drug_class": "Antidiabetic", "category": "Sulfonylurea", "allergy_group": "Sulfonylurea", "stock_status": "in_stock"},
+      {"generic": "Sitagliptin", "brand": "Januvia", "drug_class": "Antidiabetic", "category": "DPP4 inhibitor", "allergy_group": "DPP4", "stock_status": "in_stock"},
+      {"generic": "Empagliflozin", "brand": "Jardiance", "drug_class": "Antidiabetic", "category": "SGLT2 inhibitor", "allergy_group": "SGLT2", "stock_status": "in_stock"}
+    ]},
+    {"for_generic": "Azithromycin", "drug_class": "Antibiotic", "alternatives": [
+      {"generic": "Clarithromycin", "brand": "Claritek", "drug_class": "Antibiotic", "category": "Macrolide", "allergy_group": "Macrolide", "stock_status": "in_stock"},
+      {"generic": "Doxycycline", "brand": "Doxrid", "drug_class": "Antibiotic", "category": "Tetracycline", "allergy_group": "Tetracycline", "stock_status": "in_stock"}
+    ]},
+    {"for_generic": "Amoxicillin", "drug_class": "Antibiotic", "alternatives": [
+      {"generic": "Cefuroxime", "brand": "Ceftin", "drug_class": "Antibiotic", "category": "Cephalosporin", "allergy_group": "Cephalosporin", "stock_status": "in_stock"},
+      {"generic": "Clarithromycin", "brand": "Claritek", "drug_class": "Antibiotic", "category": "Macrolide", "allergy_group": "Macrolide", "stock_status": "in_stock"}
+    ]}
+  ],
+  "allergy_conflict_rules": [
+    {"allergy": "Penicillin", "conflicts_with": ["Amoxicillin", "Amoxicillin + Clavulanate", "Ampicillin", "Piperacillin"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Sulfa drugs", "conflicts_with": ["Sulfamethoxazole", "Cotrimoxazole", "Sulfadiazine"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Aspirin", "conflicts_with": ["Aspirin", "Acetylsalicylic acid"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Ibuprofen", "conflicts_with": ["Ibuprofen", "Advil"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "NSAIDs", "conflicts_with": ["Ibuprofen", "Diclofenac", "Naproxen", "Aspirin", "Indomethacin"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Codeine", "conflicts_with": ["Codeine", "Co-codamol"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Metronidazole", "conflicts_with": ["Metronidazole", "Flagyl"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Amoxicillin", "conflicts_with": ["Amoxicillin", "Amoxicillin + Clavulanate", "Augmentin"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Erythromycin", "conflicts_with": ["Erythromycin"], "severity": "MEDIUM", "action": "WARN"},
+    {"allergy": "Warfarin", "conflicts_with": ["Warfarin"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Heparin", "conflicts_with": ["Heparin", "Enoxaparin", "LMWH"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Propylthiouracil", "conflicts_with": ["Propylthiouracil", "PTU"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "ACE inhibitors", "conflicts_with": ["Ramipril", "Enalapril", "Lisinopril", "Captopril"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Contrast dye", "conflicts_with": ["Iodinated contrast", "Gadolinium"], "severity": "HIGH", "action": "BLOCK"},
+    {"allergy": "Latex", "conflicts_with": [], "severity": "MEDIUM", "action": "WARN"}
+  ]
+}
