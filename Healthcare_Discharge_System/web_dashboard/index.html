@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="app-header">
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
             <h1>Healthcare AI Discharge System</h1>
         </div>
     </header>
-    
+
     <main class="dashboard-grid">
         <!-- Left Panel: Patient Search -->
         <section class="panel left-panel">
@@ -23,7 +28,11 @@
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Search by ID or Name...">
                     <button id="searchBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
                     </button>
                 </div>
                 <div class="patient-list" id="patientList">
@@ -34,6 +43,91 @@
 
         <!-- Center Panel: Doctor Notes / Processing -->
         <section class="panel center-panel">
+
+            <!-- State 0: MCP Connection & Servers -->
+            <div class="card" id="mcpCard" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h2 style="margin: 0;">MCP Servers</h2>
+                    <div
+                        style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--success-light); border-radius: 20px; border: 1px solid #BBF7D0;">
+                        <span
+                            style="height: 8px; width: 8px; border-radius: 50%; background-color: var(--success); box-shadow: 0 0 0 2px rgba(34,197,94,0.2);"></span>
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #166534;">System Connected</span>
+                    </div>
+                </div>
+
+                <div class="server-cards-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+
+                    <!-- EHR SQLite Server -->
+                    <div id="mcp-ehr" class="server-card hover-lift"
+                        style="border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px 16px; background: #F8FAFC; cursor: pointer;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div
+                                    style="background: #E0E7FF; padding: 6px; border-radius: 8px; color: var(--primary);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                    </svg>
+                                </div>
+                                <h3 style="font-size: 0.95rem; font-weight: 600; margin: 0;">EHR Server</h3>
+                            </div>
+                            <div class="server-indicator"
+                                style="height: 8px; width: 8px; border-radius: 50%; background-color: var(--success);">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pharmacy API Server -->
+                    <div id="mcp-pharmacy" class="server-card hover-lift"
+                        style="border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px 16px; background: #F8FAFC; cursor: pointer;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="background: #FEF3C7; padding: 6px; border-radius: 8px; color: #D97706;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                    </svg>
+                                </div>
+                                <h3 style="font-size: 0.95rem; font-weight: 600; margin: 0;">Pharmacy Server</h3>
+                            </div>
+                            <div class="server-indicator"
+                                style="height: 8px; width: 8px; border-radius: 50%; background-color: var(--success);">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FileSystem Server -->
+                    <div id="mcp-billing" class="server-card hover-lift"
+                        style="border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px 16px; background: #F8FAFC; cursor: pointer;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="background: #F3E8FF; padding: 6px; border-radius: 8px; color: #9333EA;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <path d="M2 15h10"></path>
+                                        <path d="M9 18v-6"></path>
+                                    </svg>
+                                </div>
+                                <h3 style="font-size: 0.95rem; font-weight: 600; margin: 0;">Billing Server</h3>
+                            </div>
+                            <div class="server-indicator"
+                                style="height: 8px; width: 8px; border-radius: 50%; background-color: var(--success);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- State 1: Doctor Notes -->
             <div class="card" id="doctorNotesCard">
                 <h2>Doctor Notes</h2>
@@ -42,7 +136,7 @@
                 </div>
                 <button id="initiateDischargeBtn" class="primary-btn" disabled>Initiate Discharge</button>
             </div>
-            
+
             <!-- State 2: Processing -->
             <div class="card hidden slide-up" id="processingCard">
                 <h2>Discharge Processing</h2>
@@ -57,16 +151,88 @@
                 </div>
             </div>
 
-            <!-- State 3: Success & Invoice -->
-            <div class="success-wrapper hidden slide-up" id="successWrapper">
-                <div class="card success-card fade-in">
-                    <div class="success-icon-large">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+
+            <!-- State 4: Error / Blocked -->
+            <div class="error-wrapper hidden slide-up" id="errorWrapper">
+                <div class="card error-card fade-in"
+                    style="background-color: #FEF2F2; border: 1px solid #FCA5A5; text-align: center; padding: 32px 24px;">
+                    <div class="error-icon-large"
+                        style="width: 64px; height: 64px; background-color: #EF4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
                     </div>
-                    <h2>Patient Ready for Discharge</h2>
-                    <p>All discharge validations completed successfully.</p>
+                    <h2 style="color: #991B1B; margin-bottom: 8px;">Discharge Blocked</h2>
+                    <p id="errorMessage" style="color: #B91C1C;">Reason goes here</p>
                 </div>
-                
+            </div>
+
+        </section>
+
+        <!-- Right Panel: Process Status -->
+        <section class="panel right-panel">
+            <div class="card" id="statusCard">
+                <h2>Discharge Process Status</h2>
+                <ul class="module-status-list mt-4">
+                    <li id="status-verification" class="module-item">
+                        <div class="status-indicator"></div>
+                        <span>Patient Verification</span>
+                    </li>
+                    <li id="status-records" class="module-item">
+                        <div class="status-indicator"></div>
+                        <span>Clinical Records</span>
+                    </li>
+                    <li id="status-pharmacy" class="module-item">
+                        <div class="status-indicator"></div>
+                        <span>Medication & Pharmacy</span>
+                    </li>
+                    <li id="status-billing" class="module-item">
+                        <div class="status-indicator"></div>
+                        <span>Billing & Finance</span>
+                    </li>
+                    <li id="status-final" class="module-item">
+                        <div class="status-indicator"></div>
+                        <span>Final Discharge Approval</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Alerts Box -->
+            <div class="card mt-4 hidden slide-up" id="alertsCard" style="border-left: 4px solid #F59E0B;">
+                <h3 style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                        </path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Process Alerts
+                </h3>
+                <div id="alertsList" style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- Alerts populated by JS -->
+                </div>
+            </div>
+
+            <!-- Success Message Card -->
+            <div class="card success-card fade-in hidden mt-4" id="successMessageCard">
+                <div class="success-icon-large">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h2>Patient Ready for Discharge</h2>
+                <p>All discharge validations completed successfully.</p>
+            </div>
+
+            <!-- State 3: Success & Invoice (Moved from center panel) -->
+            <div class="success-wrapper hidden slide-up" id="successWrapper">
                 <div class="card invoice-card fade-in mt-4">
                     <h2>Invoice</h2>
                     <div class="invoice-details" id="invoiceDetails">
@@ -74,62 +240,23 @@
                     </div>
                     <div class="invoice-actions mt-4">
                         <button class="secondary-btn" id="downloadPdfBtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
                             Download Invoice (PDF)
                         </button>
                     </div>
                 </div>
             </div>
-
-            <!-- State 4: Error / Blocked -->
-            <div class="error-wrapper hidden slide-up" id="errorWrapper">
-                <div class="card error-card fade-in" style="background-color: #FEF2F2; border: 1px solid #FCA5A5; text-align: center; padding: 32px 24px;">
-                    <div class="error-icon-large" style="width: 64px; height: 64px; background-color: #EF4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                    </div>
-                    <h2 style="color: #991B1B; margin-bottom: 8px;">Discharge Blocked</h2>
-                    <p id="errorMessage" style="color: #B91C1C;">Reason goes here</p>
-                </div>
-            </div>
-
-            <!-- Alerts Box -->
-            <div class="card mt-4 hidden slide-up" id="alertsCard" style="border-left: 4px solid #F59E0B;">
-                <h3 style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                    Process Alerts
-                </h3>
-                <div id="alertsList" style="display: flex; flex-direction: column; gap: 8px;">
-                    <!-- Alerts populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Right Panel: Process Status -->
-        <section class="panel right-panel">
-            <div class="card" id="statusCard">
-                <h2>Process Completion Status</h2>
-                <ul class="module-status-list mt-4">
-                    <li id="status-ehr" class="module-item">
-                        <div class="status-indicator"></div>
-                        <span>EHR</span>
-                    </li>
-                    <li id="status-pharmacy" class="module-item">
-                        <div class="status-indicator"></div>
-                        <span>Pharmacy</span>
-                    </li>
-                    <li id="status-billing" class="module-item">
-                        <div class="status-indicator"></div>
-                        <span>Billing</span>
-                    </li>
-                    <li id="status-final" class="module-item">
-                        <div class="status-indicator"></div>
-                        <span>Final Approval</span>
-                    </li>
-                </ul>
-            </div>
         </section>
     </main>
-    
+
     <!-- Modal for Invoice Preview -->
     <div id="invoiceModal" class="modal hidden fade-in">
         <div class="modal-content slide-up">
@@ -138,7 +265,7 @@
                 <button class="close-btn" id="closeModalBtn">&times;</button>
             </div>
             <div class="invoice-preview" id="invoicePreviewContent">
-               <!-- Dynamic Invoice HTML -->
+                <!-- Dynamic Invoice HTML -->
             </div>
             <div class="modal-actions">
                 <button class="primary-btn" id="printInvoiceBtn">Print Invoice</button>
@@ -148,4 +275,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>

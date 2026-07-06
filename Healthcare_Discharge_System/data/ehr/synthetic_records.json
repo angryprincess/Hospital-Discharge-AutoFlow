@@ -13,7 +13,7 @@
       "ward": "General",
       "attending_doctor": "Dr. Priya Sharma",
       "diagnosis": "Type 2 Diabetes Mellitus with Hypertension",
-      "allergies": ["Penicillin", "Sulfa drugs"],
+      "allergies": ["Sulfa drugs"],
       "medications": [
         {"brand": "Augmentin", "dosage": "625mg", "frequency": "twice daily", "duration": "7 days"},
         {"brand": "Telma", "dosage": "40mg", "frequency": "once daily", "duration": "30 days"},
