@@ -10,6 +10,14 @@ import logging
 from datetime import datetime
 from typing import Dict, Any, List, Optional, Tuple
 
+# Try to import google-genai for the agentic mode
+try:
+    from google import genai
+    from google.genai import types
+    HAS_GENAI = True
+except ImportError:
+    HAS_GENAI = False
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from backend.services.ehr_service import EHRService
@@ -66,6 +74,8 @@ class DischargeWorkflowResult:
         self.approval_reasons: List[str] = []
         self.invoice: Optional[Dict] = None
         self.medication_map: List[Dict] = []
+        self.execution_time_ms: int = 0
+        self.token_count: int = 0
 
     def add_step(self, step: WorkflowStep):
         self.steps.append(step)
@@ -96,6 +106,8 @@ class DischargeWorkflowResult:
             "approval_reasons": self.approval_reasons,
             "invoice": self.invoice,
             "medication_map": self.medication_map,
+            "execution_time_ms": self.execution_time_ms,
+            "token_count": self.token_count,
         }
 
 
@@ -103,7 +115,7 @@ class DischargeAgent:
     """
     AI Discharge Coordination Agent.
 
-    Orchestrates the full discharge workflow:
+    Orchestrates the full discharge workflow using an LLM-based agent with tools:
     1. Search Patient
     2. Read EHR
     3. Retrieve Medications
@@ -123,7 +135,10 @@ class DischargeAgent:
     def run_discharge_workflow(self, patient_id: str,
                                override_approvals: bool = False) -> DischargeWorkflowResult:
         """
-        Execute the complete discharge coordination workflow.
+        Execute the complete discharge coordination workflow. Runs using Google GenAI
+        agentic tool calling when GEMINI_API_KEY / GOOGLE_API_KEY is available, or
+        a Hugging Face model when HF_TOKEN / HUGGINGFACE_API_KEY is available, or
+        simulates the tool-use workflow sequentially as a fallback.
 
         Args:
             patient_id: Patient ID to discharge
@@ -134,6 +149,9 @@ class DischargeAgent:
         """
         workflow_id = f"WF-{datetime.now().strftime('%Y%m%d%H%M%S')}-{str(uuid.uuid4())[:4].upper()}"
         result = DischargeWorkflowResult(workflow_id, patient_id, self.role)
+        
+        import time
+        start_perf_time = time.perf_counter()
 
         logger.info(f"Starting discharge workflow {workflow_id} for patient {patient_id}")
         audit_logger.log(
@@ -144,12 +162,484 @@ class DischargeAgent:
             patient_id=patient_id,
         )
 
+        # Declare state variables for tools to pass data between steps
+        patient_data = {}
+        medications = []
+        medication_map = []
+        stock_results = {}
+        final_medications = []
+        invoice_data = {}
+
+        # Define the tools
+        def search_patient(patient_id: str) -> dict:
+            """Step 1: Search and validate patient existence in EHR system.
+            
+            Args:
+                patient_id: The ID of the patient to search (e.g., 'P001')
+            
+            Returns:
+                Dictionary containing the patient's data.
+            """
+            nonlocal patient_data
+            logger.info(f"[Agentic-Tool] search_patient called for {patient_id}")
+            patient_data = self._step1_search_patient(patient_id, result)
+            return patient_data or {}
+
+        def read_ehr(patient_data: dict) -> str:
+            """Step 2: Read and analyze full EHR data for the patient.
+            
+            Args:
+                patient_data: The patient record dictionary returned from search_patient.
+            
+            Returns:
+                Confirmation string.
+            """
+            logger.info(f"[Agentic-Tool] read_ehr called")
+            self._step2_read_ehr(patient_id, patient_data, result)
+            return "EHR data successfully read and analyzed."
+
+        def retrieve_medications(patient_data: dict) -> list:
+            """Step 3: Retrieve current medication prescriptions for the patient.
+            
+            Args:
+                patient_data: The patient record dictionary returned from search_patient.
+            
+            Returns:
+                List of prescribed medications.
+            """
+            nonlocal medications
+            logger.info(f"[Agentic-Tool] retrieve_medications called")
+            medications = patient_data.get("medications", [])
+            self._step3_retrieve_medications(patient_id, medications, result)
+            return medications
+
+        def resolve_brand_to_generic(medications: list) -> list:
+            """Step 4: Resolve brand names of prescribed medications to generic equivalents.
+            
+            Args:
+                medications: List of medication prescriptions with brand names.
+            
+            Returns:
+                List of resolved medication mappings.
+            """
+            nonlocal medication_map
+            logger.info(f"[Agentic-Tool] resolve_brand_to_generic called")
+            medication_map = self._step4_resolve_generics(medications, result)
+            result.medication_map = medication_map
+            return medication_map
+
+        def check_pharmacy_inventory(medication_map: list) -> dict:
+            """Step 5: Check pharmacy stock level and inventory availability for resolved generics.
+            
+            Args:
+                medication_map: List of resolved medication mappings.
+            
+            Returns:
+                Dictionary mapping generic names to stock results.
+            """
+            nonlocal stock_results
+            logger.info(f"[Agentic-Tool] check_pharmacy_inventory called")
+            stock_results = self._step5_check_inventory(medication_map, result)
+            return stock_results
+
+        def suggest_alternative_medicines(medication_map: list, stock_results: dict, allergies: list) -> list:
+            """Step 6: Suggest alternative generic drugs for out-of-stock or low-stock prescriptions.
+            
+            Args:
+                medication_map: List of resolved medication mappings.
+                stock_results: Stock status checks from check_pharmacy_inventory.
+                allergies: List of patient's known allergies.
+            
+            Returns:
+                List of final medications to be prescribed.
+            """
+            nonlocal final_medications
+            logger.info(f"[Agentic-Tool] suggest_alternative_medicines called")
+            final_medications = self._step6_suggest_alternatives(medication_map, stock_results, allergies, result)
+            return final_medications
+
+        def check_allergy_conflicts(final_medications: list, allergies: list) -> str:
+            """Step 7: Check the final medication list against patient allergies to prevent adverse reactions.
+            
+            Args:
+                final_medications: List of final medications.
+                allergies: List of patient's known allergies.
+            
+            Returns:
+                Confirmation string.
+            """
+            logger.info(f"[Agentic-Tool] check_allergy_conflicts called")
+            self._step7_check_allergies(final_medications, allergies, result)
+            return "Allergy conflict check complete."
+
+        def generate_patient_invoice(billing_code: str, final_medications: list) -> dict:
+            """Step 8: Generate patient billing invoice (PHI-safe).
+            
+            Args:
+                billing_code: Diagnostic billing code.
+                final_medications: List of final medications.
+            
+            Returns:
+                The draft invoice dictionary.
+            """
+            nonlocal invoice_data
+            logger.info(f"[Agentic-Tool] generate_patient_invoice called")
+            invoice_data = self._step8_generate_invoice(patient_id, billing_code, final_medications, result)
+            return invoice_data or {}
+
+        def validate_patient_invoice(invoice_data: dict) -> str:
+            """Step 9: Validate the generated patient invoice and perform deduplication.
+            
+            Args:
+                invoice_data: The invoice dictionary returned from generate_patient_invoice.
+            
+            Returns:
+                Confirmation string.
+            """
+            logger.info(f"[Agentic-Tool] validate_patient_invoice called")
+            self._step9_validate_invoice(invoice_data, result)
+            return "Invoice validation and deduplication complete."
+
+        def generate_final_discharge_packet(patient_data: dict, final_medications: list, invoice_data: dict = None) -> str:
+            """Step 10: Generate the final discharge packet, including patient instructions and billing summary.
+            
+            Args:
+                patient_data: The patient data dictionary.
+                final_medications: List of final medications.
+                invoice_data: The validated invoice dictionary (optional if not generated).
+            
+            Returns:
+                Confirmation string.
+            """
+            logger.info(f"[Agentic-Tool] generate_final_discharge_packet called")
+            self._step10_discharge_packet(patient_data, final_medications, invoice_data, result)
+            return "Discharge packet successfully generated."
+
+        # Construct agent system instructions
+        system_instruction = (
+            "You are an autonomous AI Healthcare Discharge Coordination Agent.\n"
+            "Your objective is to coordinate the complete patient discharge workflow by executing the 10-step process in sequence.\n"
+            "You must call the tools provided to you in the correct order (Step 1 to Step 10) to complete the discharge process.\n"
+            "The steps are:\n"
+            "1. Search Patient: Call `search_patient` with the patient's ID.\n"
+            "2. Read EHR: Call `read_ehr` with the patient data returned from Step 1.\n"
+            "3. Retrieve Medications: Call `retrieve_medications` with the patient data from Step 1.\n"
+            "4. Resolve Brand → Generic: Call `resolve_brand_to_generic` with the medications list from Step 3.\n"
+            "5. Check Inventory: Call `check_pharmacy_inventory` with the resolved medication map from Step 4.\n"
+            "6. Suggest Alternatives: Call `suggest_alternative_medicines` with the medication map, inventory stock results, and patient allergies.\n"
+            "7. Check Allergy Conflicts: Call `check_allergy_conflicts` with the final medications list and patient allergies.\n"
+            "8. Generate Invoice: Call `generate_patient_invoice` with the patient's billing code and the final medications list.\n"
+            "9. Validate Invoice: Call `validate_patient_invoice` with the invoice data from Step 8.\n"
+            "10. Generate Final Discharge Packet: Call `generate_final_discharge_packet` with the patient data, final medications, and invoice data.\n\n"
+            "Execute these tools step-by-step. If `search_patient` returns an empty dict or indicates the patient does not exist, stop immediately.\n"
+            "After calling `generate_final_discharge_packet`, output a summary of the workflow execution and overall status."
+        )
+
+        prompt = f"Initiate the discharge workflow for patient {patient_id}."
+
+        gemini_api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACE_API_KEY")
+
+        # 1. LIVE GEMINI FLOW
+        if HAS_GENAI and gemini_api_key:
+            try:
+                logger.info(f"Invoking Gemini Flash agent for patient {patient_id}...")
+                client = genai.Client()
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        system_instruction=system_instruction,
+                        tools=[
+                            search_patient,
+                            read_ehr,
+                            retrieve_medications,
+                            resolve_brand_to_generic,
+                            check_pharmacy_inventory,
+                            suggest_alternative_medicines,
+                            check_allergy_conflicts,
+                            generate_patient_invoice,
+                            validate_patient_invoice,
+                            generate_final_discharge_packet
+                        ],
+                        temperature=0.0
+                    )
+                )
+                logger.info(f"Gemini agent run finished. Final response: {response.text}")
+                if response.usage_metadata:
+                    result.token_count = response.usage_metadata.total_token_count
+            except Exception as e:
+                logger.error(f"Agentic Gemini execution failed: {e}. Falling back to simulation.", exc_info=True)
+                self._run_discharge_workflow_simulated(patient_id, result, override_approvals)
+
+        # 2. LIVE HUGGING FACE FLOW (via Serverless Inference API)
+        elif hf_token:
+            try:
+                logger.info(f"Invoking Hugging Face agent (Qwen/Qwen2.5-7B-Instruct) for patient {patient_id}...")
+                import httpx
+                import json
+                
+                model_id = "Qwen/Qwen2.5-7B-Instruct"
+                headers = {"Authorization": f"Bearer {hf_token}"}
+                url = f"https://api-inference.huggingface.co/models/{model_id}/v1/chat/completions"
+                
+                tools_schema = [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "search_patient",
+                            "description": "Step 1: Search and validate patient existence in EHR system.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "patient_id": {"type": "string", "description": "The ID of the patient to search (e.g., 'P001')"}
+                                },
+                                "required": ["patient_id"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "read_ehr",
+                            "description": "Step 2: Read and analyze full EHR data for the patient.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "patient_data": {"type": "object", "description": "The patient record dictionary returned from search_patient."}
+                                },
+                                "required": ["patient_data"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "retrieve_medications",
+                            "description": "Step 3: Retrieve current medication prescriptions for the patient.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "patient_data": {"type": "object", "description": "The patient record dictionary returned from search_patient."}
+                                },
+                                "required": ["patient_data"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "resolve_brand_to_generic",
+                            "description": "Step 4: Resolve brand names of prescribed medications to generic equivalents.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "medications": {"type": "array", "items": {"type": "object"}, "description": "List of medication prescriptions with brand names."}
+                                },
+                                "required": ["medications"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "check_pharmacy_inventory",
+                            "description": "Step 5: Check pharmacy stock level and inventory availability for resolved generics.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "medication_map": {"type": "array", "items": {"type": "object"}, "description": "List of resolved medication mappings."}
+                                },
+                                "required": ["medication_map"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "suggest_alternative_medicines",
+                            "description": "Step 6: Suggest alternative generic drugs for out-of-stock or low-stock prescriptions.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "medication_map": {"type": "array", "items": {"type": "object"}, "description": "List of resolved medication mappings."},
+                                    "stock_results": {"type": "object", "description": "Stock status checks from check_pharmacy_inventory."},
+                                    "allergies": {"type": "array", "items": {"type": "string"}, "description": "List of patient's known allergies."}
+                                },
+                                "required": ["medication_map", "stock_results", "allergies"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "check_allergy_conflicts",
+                            "description": "Step 7: Check the final medication list against patient allergies to prevent adverse reactions.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "final_medications": {"type": "array", "items": {"type": "object"}, "description": "List of final medications."},
+                                    "allergies": {"type": "array", "items": {"type": "string"}, "description": "List of patient's known allergies."}
+                                },
+                                "required": ["final_medications", "allergies"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "generate_patient_invoice",
+                            "description": "Step 8: Generate patient billing invoice (PHI-safe).",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "billing_code": {"type": "string", "description": "Diagnostic billing code."},
+                                    "final_medications": {"type": "array", "items": {"type": "object"}, "description": "List of final medications."}
+                                },
+                                "required": ["billing_code", "final_medications"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "validate_patient_invoice",
+                            "description": "Step 9: Validate the generated patient invoice and perform deduplication.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "invoice_data": {"type": "object", "description": "The invoice dictionary returned from generate_patient_invoice."}
+                                },
+                                "required": ["invoice_data"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "generate_final_discharge_packet",
+                            "description": "Step 10: Generate the final discharge packet, including patient instructions and billing summary.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "patient_data": {"type": "object", "description": "The patient data dictionary."},
+                                    "final_medications": {"type": "array", "items": {"type": "object"}, "description": "List of final medications."},
+                                    "invoice_data": {"type": "object", "description": "The validated invoice dictionary (optional if not generated)."}
+                                },
+                                "required": ["patient_data", "final_medications"]
+                            }
+                        }
+                    }
+                ]
+
+                tool_funcs = {
+                    "search_patient": search_patient,
+                    "read_ehr": read_ehr,
+                    "retrieve_medications": retrieve_medications,
+                    "resolve_brand_to_generic": resolve_brand_to_generic,
+                    "check_pharmacy_inventory": check_pharmacy_inventory,
+                    "suggest_alternative_medicines": suggest_alternative_medicines,
+                    "check_allergy_conflicts": check_allergy_conflicts,
+                    "generate_patient_invoice": generate_patient_invoice,
+                    "validate_patient_invoice": validate_patient_invoice,
+                    "generate_final_discharge_packet": generate_final_discharge_packet
+                }
+
+                messages = [
+                    {"role": "system", "content": system_instruction},
+                    {"role": "user", "content": prompt}
+                ]
+
+                for _ in range(15):
+                    payload = {
+                        "model": model_id,
+                        "messages": messages,
+                        "tools": tools_schema,
+                        "tool_choice": "auto",
+                        "temperature": 0.1
+                    }
+                    response = httpx.post(url, json=payload, headers=headers, timeout=30.0)
+                    if response.status_code != 200:
+                        raise Exception(f"HF API returned {response.status_code}: {response.text}")
+                    
+                    resp_json = response.json()
+                    usage = resp_json.get("usage", {})
+                    if usage:
+                        result.token_count += usage.get("total_tokens", 0)
+                    choice = resp_json["choices"][0]
+                    message = choice["message"]
+                    messages.append(message)
+                    
+                    if choice.get("finish_reason") == "tool_calls" or message.get("tool_calls"):
+                        for tc in message["tool_calls"]:
+                            tc_id = tc.get("id", "call_" + str(uuid.uuid4())[:8])
+                            fn_name = tc["function"]["name"]
+                            fn_args_str = tc["function"]["arguments"]
+                            if isinstance(fn_args_str, str):
+                                fn_args = json.loads(fn_args_str)
+                            else:
+                                fn_args = fn_args_str
+                            
+                            func = tool_funcs.get(fn_name)
+                            if func:
+                                fn_res = func(**fn_args)
+                            else:
+                                fn_res = {"error": f"Tool {fn_name} not found"}
+                                
+                            messages.append({
+                                "role": "tool",
+                                "tool_call_id": tc_id,
+                                "name": fn_name,
+                                "content": json.dumps(fn_res)
+                            })
+                    else:
+                        logger.info(f"HF agent loop finished. Final response: {message.get('content')}")
+                        break
+            except Exception as e:
+                logger.error(f"Agentic HuggingFace execution failed: {e}. Falling back to simulation.", exc_info=True)
+                self._run_discharge_workflow_simulated(patient_id, result, override_approvals)
+
+        # 3. SIMULATED FALLBACK FLOW
+        else:
+            logger.info("Running in Agentic simulation mode (rule-based fallback due to missing key/library)")
+            self._run_discharge_workflow_simulated(patient_id, result, override_approvals)
+            # Estimate tokens in simulation mode
+            chars = len(str(result.discharge_packet or "")) + len(str(result.invoice or "")) + 2000
+            result.token_count = max(450, int(chars / 3.5))
+
+        result.completed_at = datetime.now().isoformat()
+        result.execution_time_ms = int((time.perf_counter() - start_perf_time) * 1000)
+
+        # Determine final status
+        if result.overall_status == "in_progress":
+            failed_steps = [s for s in result.steps if s.status == "failed"]
+            if len(failed_steps) > 2:
+                result.overall_status = "failed"
+            elif result.human_approval_required:
+                result.overall_status = "partial"
+            else:
+                result.overall_status = "success"
+
+        audit_logger.log(
+            server="Agent", tool="run_discharge_workflow", role=self.role,
+            status=AuditStatus.SUCCESS if result.overall_status == "success" else AuditStatus.WARNING,
+            input_data={"workflow_id": workflow_id},
+            output_summary=f"Workflow {result.overall_status}. Steps: {len(result.steps)}",
+            patient_id=patient_id,
+        )
+
+        logger.info(f"Workflow {workflow_id} completed: {result.overall_status}")
+        return result
+
+    def _run_discharge_workflow_simulated(self, patient_id: str,
+                                          result: DischargeWorkflowResult,
+                                          override_approvals: bool = False) -> DischargeWorkflowResult:
+        """Simulated workflow runner that executes the 10 steps in rule-based order."""
         try:
             # ── Step 1: Search & Validate Patient ──────────────────────────────
             patient_data = self._step1_search_patient(patient_id, result)
             if not patient_data:
                 result.overall_status = "failed"
-                result.completed_at = datetime.now().isoformat()
                 return result
 
             # ── Step 2: Read Full EHR ──────────────────────────────────────────
@@ -192,30 +682,8 @@ class DischargeAgent:
             logger.error(f"Workflow error: {e}", exc_info=True)
             result.add_alert("system_error", f"Unexpected error in workflow: {str(e)}", "critical")
             result.overall_status = "failed"
-            audit_logger.log_failure("Agent", "run_discharge_workflow", self.role,
+            audit_logger.log_failure("Agent", "run_discharge_workflow_simulated", self.role,
                                      str(e), patient_id)
-
-        result.completed_at = datetime.now().isoformat()
-
-        # Determine final status
-        if result.overall_status == "in_progress":
-            failed_steps = [s for s in result.steps if s.status == "failed"]
-            if len(failed_steps) > 2:
-                result.overall_status = "failed"
-            elif result.human_approval_required:
-                result.overall_status = "partial"
-            else:
-                result.overall_status = "success"
-
-        audit_logger.log(
-            server="Agent", tool="run_discharge_workflow", role=self.role,
-            status=AuditStatus.SUCCESS if result.overall_status == "success" else AuditStatus.WARNING,
-            input_data={"workflow_id": workflow_id},
-            output_summary=f"Workflow {result.overall_status}. Steps: {len(result.steps)}",
-            patient_id=patient_id,
-        )
-
-        logger.info(f"Workflow {workflow_id} completed: {result.overall_status}")
         return result
 
     # ─────────────────────────────────────────────────────────────────────────

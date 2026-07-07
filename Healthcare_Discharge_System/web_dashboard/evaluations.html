@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI System Evaluations (Tech)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="app-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <h1>AI System Evaluations (Tech)</h1>
+        </div>
+        <div>
+            <a href="index.html" class="evals-btn" style="text-decoration: none; padding: 8px 16px; font-size: 0.9rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Dashboard
+            </a>
+        </div>
+    </header>
+
+    <main class="eval-dashboard">
+        <div class="eval-header-row">
+            <div>
+                <h2 style="margin: 0; font-size: 1.25rem; color: var(--text-main);">Evaluation Details</h2>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;" id="lastUpdated">
+                <!-- Timestamp -->
+            </div>
+        </div>
+
+        <!-- Stats Strip -->
+        <div class="eval-stats-strip">
+            <div class="eval-stat-card">
+                <label>Patient ID</label>
+                <span id="stat-patient-id">-</span>
+            </div>
+            <div class="eval-stat-card">
+                <label>Total Execution Time</label>
+                <span id="stat-exec-time">-</span>
+            </div>
+            <div class="eval-stat-card">
+                <label>Token Usage</label>
+                <span id="stat-tokens">-</span>
+            </div>
+        </div>
+
+        <!-- 3x3 Evaluation Matrix -->
+        <div class="eval-table-card">
+            <h2>Technical Evaluation Matrix</h2>
+            <table class="eval-table">
+                <thead>
+                    <tr>
+                        <th style="width: 160px; border-right: 2px solid var(--border-color); text-align: center;">
+                            Complexity Level</th>
+                        <th>AI Agent Evals</th>
+                        <th>MCP Server Evals</th>
+                        <th>Compliance Auditing Evals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Basic Row -->
+                    <tr>
+                        <td class="row-header">Basic</td>
+                        <td>
+                            <div class="eval-cell" id="agent-basic">
+                                <div class="eval-cell-title" id="agent-basic-name">Step Sequence Compliance</div>
+                                <span class="eval-cell-badge badge-pass" id="agent-basic-badge">Pending</span>
+                                <div class="eval-cell-result" id="agent-basic-result">-</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="eval-cell" id="mcp-basic">
+                                <div class="eval-cell-title" id="mcp-basic-name">Server Handshake & Ping</div>
+                                <span class="eval-cell-badge badge-pass" id="mcp-basic-badge">Pending</span>
+                                <div class="eval-cell-result" id="mcp-basic-result">-</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="eval-cell" id="compliance-basic">
+                                <div class="eval-cell-title" id="compliance-basic-name">RBAC Access Control</div>
+                                <span class="eval-cell-badge badge-pass" id="compliance-basic-badge">Pending</span>
+                                <div class="eval-cell-result" id="compliance-basic-result">-</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Middling Row -->
+                    <tr>
+                        <td class="row-header">Middling</td>
+                        <td>
+                            <div class="eval-cell" id="agent-middling">
+                                <div class="eval-cell-title" id="agent-middling-name">Average Step Latency</div>
+                                <span class="eval-cell-badge badge-pass" id="agent-middling-badge">Pending</span>
+                                <div class="eval-cell-result" id="agent-middling-result">-</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="eval-cell" id="mcp-middling">
+                                <div class="eval-cell-title" id="mcp-middling-name">DB Query Latency</div>
+                                <span class="eval-cell-badge badge-pass" id="mcp-middling-badge">Pending</span>
+                                <div class="eval-cell-result" id="mcp-middling-result">-</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="eval-cell" id="compliance-middling">
+                                <div class="eval-cell-title" id="compliance-middling-name">Audit Log Integrity Check
+                                </div>
+                                <span class="eval-cell-badge badge-pass" id="compliance-middling-badge">Pending</span>
+                                <div class="eval-cell-result" id="compliance-middling-result">-</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Advanced Row -->
+                    <tr>
+                        <td class="row-header">Advanced</td>
+                        <td>
+                            <div class="eval-cell" id="agent-advanced">
+                                <div class="eval-cell-title" id="agent-advanced-name">Clinical Hallucination Guard</div>
+                                <span class="eval-cell-badge badge-pass" id="agent-advanced-badge">Pending</span>
+                                <div class="eval-cell-result" id="agent-advanced-result">-</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="eval-cell" id="mcp-advanced">
+                                <div class="eval-cell-title" id="mcp-advanced-name">Concurrent Load Stress</div>
+                                <span class="eval-cell-badge badge-pass" id="mcp-advanced-badge">Pending</span>
+                                <div class="eval-cell-result" id="mcp-advanced-result">-</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="eval-cell" id="compliance-advanced">
+                                <div class="eval-cell-title" id="compliance-advanced-name">Dynamic PHI Leak Scanner
+                                </div>
+                                <span class="eval-cell-badge badge-pass" id="compliance-advanced-badge">Pending</span>
+                                <div class="eval-cell-result" id="compliance-advanced-result">-</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="evaluations.js"></script>
+</body>
+
+</html>

@@ -230,9 +230,12 @@ function resetWorkflowState() {
     processingCard.classList.add("hidden");
 
     successWrapper.classList.add("hidden");
-    if(successMessageCard) successMessageCard.classList.add("hidden");
+    if (successMessageCard) successMessageCard.classList.add("hidden");
 
     errorWrapper.classList.add("hidden");
+
+    const evalsFooter = document.getElementById('evalsFooter');
+    if (evalsFooter) evalsFooter.classList.add('hidden');
 
     alertsCard.classList.add("hidden");
 
@@ -414,12 +417,17 @@ async function simulateStepRendering(workflow) {
             showErrorState(workflow.summary || "Workflow Failed");
 
         }
+
+        const evalsFooter = document.getElementById('evalsFooter');
+        if (evalsFooter) {
+            evalsFooter.classList.remove('hidden');
+        }
     }, 800);
 }
 
 function showSuccessState(invoiceData) {
     successWrapper.classList.remove('hidden');
-    if(successMessageCard) successMessageCard.classList.remove('hidden');
+    if (successMessageCard) successMessageCard.classList.remove('hidden');
     currentInvoiceData = invoiceData;
 
     if (invoiceData) {
@@ -474,12 +482,12 @@ function openInvoicePreview() {
     const generatedDate = currentInvoiceData.generated_at ? new Date(currentInvoiceData.generated_at) : new Date();
     const dateOnly = formatDateFull(generatedDate);
     const timeOnly = formatTime(generatedDate);
-    
+
     // Calculate values
     const roomRent = currentInvoiceData.base_charge || 4200.00;
     const taxes = currentInvoiceData.tax_amount || 437.50;
     const subTotal = currentInvoiceData.grand_total - taxes;
-    
+
     let medsHtml = '';
     currentInvoiceData.medicines.forEach((m, index) => {
         medsHtml += `
@@ -554,7 +562,7 @@ function openInvoicePreview() {
                     👤 VISIT & DIAGNOSIS DETAILS
                 </h3>
                 <table style="width: 100%; font-size: 0.9rem; color: #0f172a; line-height: 1.6;">
-                    <tr><td style="font-weight: 600; width: 40%;">Visit ID</td><td>: VIS-2026-${selectedPatient.id.replace('P','')}</td></tr>
+                    <tr><td style="font-weight: 600; width: 40%;">Visit ID</td><td>: VIS-2026-${selectedPatient.id.replace('P', '')}</td></tr>
                     <tr><td style="font-weight: 600;">Admission Date</td><td>: May 12, 2026</td></tr>
                     <tr><td style="font-weight: 600;">Discharge Date</td><td>: ${dateOnly}</td></tr>
                     <tr><td style="font-weight: 600;">Department</td><td>: ${selectedPatient.ward}</td></tr>
@@ -664,3 +672,15 @@ function closeInvoicePreview() {
 
 // Start
 init();
+
+// Redirection handler for Evaluations (Tech) page
+const goToEvalsBtn = document.getElementById('goToEvalsBtn');
+if (goToEvalsBtn) {
+    goToEvalsBtn.addEventListener('click', () => {
+        if (selectedPatient) {
+            window.location.href = `evaluations.html?patient_id=${selectedPatient.id}`;
+        } else {
+            window.location.href = `evaluations.html`;
+        }
+    });
+}
