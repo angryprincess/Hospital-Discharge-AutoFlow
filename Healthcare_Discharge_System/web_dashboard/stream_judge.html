@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM-as-a-Judge Stream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse-animation 1.5s infinite ease-in-out;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .pulse-dot.error {
+            background-color: var(--failed);
+            box-shadow: 0 0 8px var(--failed);
+            animation: none;
+        }
+
+        .pulse-dot.completed {
+            background-color: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+            animation: none;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.12); opacity: 1; box-shadow: 0 0 12px var(--success); }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        .stream-panel {
+            background-color: #0F172A;
+            color: #F8FAFC;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            min-height: 450px;
+            max-height: 650px;
+            overflow-y: auto;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+            border: 1px solid #1E293B;
+            position: relative;
+        }
+
+        .stream-content {
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .stream-content p {
+            margin: 0 0 1em 0;
+        }
+
+        .stream-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .term-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .term-close { background-color: #EF4444; }
+        .term-min { background-color: #F59E0B; }
+        .term-max { background-color: #10B981; }
+
+        .patient-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .patient-info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .patient-info-item label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .patient-info-item span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <h1>LLM-as-a-Judge Stream</h1>
+        </div>
+        <div>
+            <a href="#" id="back-btn" class="evals-btn" style="text-decoration: none; padding: 8px 16px; font-size: 0.9rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Evaluations
+            </a>
+        </div>
+    </header>
+
+    <main class="eval-dashboard">
+        <div class="eval-header-row" style="margin-bottom: 16px;">
+            <div style="display: flex; align-items: center;">
+                <span class="pulse-dot" id="stream-status-dot"></span>
+                <h2 style="margin: 0; font-size: 1.25rem; color: var(--text-main);" id="stream-status-text">Connecting to Judge Stream...</h2>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;" id="judgeModel">
+                Evaluator Model: gpt-5.4-nano
+            </div>
+        </div>
+
+        <div class="patient-card">
+            <div class="patient-info-item">
+                <label>Patient ID</label>
+                <span id="patient-id-val">-</span>
+            </div>
+            <div class="patient-info-item">
+                <label>Attestation Mode</label>
+                <span>Live LLM Evaluation</span>
+            </div>
+            <div class="patient-info-item">
+                <label>Judge Target</label>
+                <span>AI Discharge Agent Run</span>
+            </div>
+        </div>
+
+        <div class="stream-panel">
+            <div class="stream-header">
+                <div class="terminal-buttons">
+                    <div class="term-btn term-close"></div>
+                    <div class="term-btn term-min"></div>
+                    <div class="term-btn term-max"></div>
+                </div>
+                <div style="font-size: 0.8rem; color: #64748B; font-family: monospace;">evaluator_shell.log</div>
+            </div>
+            <div class="stream-content" id="stream-output">
+                Initializing evaluation stream...
+            </div>
+        </div>
+    </main>
+
+    <script src="stream_judge.js"></script>
+</body>
+</html>

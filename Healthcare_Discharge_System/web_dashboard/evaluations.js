@@ -46,8 +46,22 @@ function updateDashboard(data) {
 
     // AI Agent cells
     updateCell('agent-basic', evals.ai_agent.async_completion);
-    updateCell('agent-middling', evals.ai_agent.avg_latency);
-    updateCell('agent-advanced', evals.ai_agent.clinical_guard);
+    updateCell('agent-latency', evals.ai_agent.avg_latency);
+    updateCell('agent-middling', evals.ai_agent.clinical_guard);
+
+    // Update Clinical Hallucination Guard encounters count detail
+    const encountersEl = document.getElementById('agent-middling-detail');
+    if (encountersEl && evals.ai_agent.clinical_guard && evals.ai_agent.clinical_guard.encounters) {
+        encountersEl.textContent = evals.ai_agent.clinical_guard.encounters;
+    }
+
+    updateCell('agent-advanced', evals.ai_agent.llm_judge);
+
+    // Set stream judge link
+    const streamJudgeLink = document.getElementById('stream-judge-link');
+    if (streamJudgeLink) {
+        streamJudgeLink.href = `stream_judge.html?patient_id=${data.patient_id}`;
+    }
 
     // MCP Server cells
     updateCell('mcp-basic', evals.mcp_server.handling_ping);
@@ -73,8 +87,8 @@ function updateCell(cellPrefix, metric) {
 
     if (!metric) return;
 
-    // Set result text (ignore if it's the advanced observability link which is in HTML)
-    if (cellPrefix !== 'mcp-advanced') {
+    // Set result text (ignore if it's the advanced observability/judge stream links which are in HTML)
+    if (cellPrefix !== 'mcp-advanced' && cellPrefix !== 'agent-advanced') {
         result.textContent = metric.result;
     }
 
@@ -97,7 +111,7 @@ function updateCell(cellPrefix, metric) {
 function setLoadingState(isLoading) {
     const elements = [
         'stat-patient-id', 'stat-exec-time', 'stat-tokens',
-        'agent-basic-result', 'agent-middling-result', 'agent-advanced-result',
+        'agent-basic-result', 'agent-latency-result', 'agent-middling-result',
         'mcp-basic-result', 'mcp-middling-result', 'mcp-stress-result',
         'compliance-basic-result', 'compliance-middling-result', 'compliance-advanced-result'
     ];

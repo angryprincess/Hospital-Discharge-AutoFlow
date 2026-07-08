@@ -76,10 +76,17 @@
                     <tr>
                         <td class="row-header">Basic</td>
                         <td>
-                            <div class="eval-cell" id="agent-basic">
-                                <div class="eval-cell-title" id="agent-basic-name">Step Sequence Compliance</div>
-                                <span class="eval-cell-badge badge-pass" id="agent-basic-badge">Pending</span>
-                                <div class="eval-cell-result" id="agent-basic-result">-</div>
+                            <div class="eval-cell" id="agent-basic-container">
+                                <div class="eval-cell" id="agent-basic" style="border: none; padding: 0; box-shadow: none;">
+                                    <div class="eval-cell-title" id="agent-basic-name">ASync Step Completion</div>
+                                    <span class="eval-cell-badge badge-pass" id="agent-basic-badge">Pending</span>
+                                    <div class="eval-cell-result" id="agent-basic-result">-</div>
+                                </div>
+                                <div style="margin-top: 12px; border-top: 1px dashed var(--border-color); padding-top: 12px;" id="agent-latency-container">
+                                    <div class="eval-cell-title" id="agent-latency-name">Avg Step Latency</div>
+                                    <span class="eval-cell-badge badge-pass" id="agent-latency-badge">Pending</span>
+                                    <div class="eval-cell-result" id="agent-latency-result">-</div>
+                                </div>
                             </div>
                         </td>
                         <td>
@@ -103,9 +110,12 @@
                         <td class="row-header">Middling</td>
                         <td>
                             <div class="eval-cell" id="agent-middling">
-                                <div class="eval-cell-title" id="agent-middling-name">Average Step Latency</div>
+                                <div class="eval-cell-title" id="agent-middling-name">Clinical Hallucination Guard</div>
                                 <span class="eval-cell-badge badge-pass" id="agent-middling-badge">Pending</span>
                                 <div class="eval-cell-result" id="agent-middling-result">-</div>
+                                <div class="eval-cell-detail" id="agent-middling-detail" style="margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+                                    Blocked: - / Warning: -
+                                </div>
                             </div>
                         </td>
                         <td>
@@ -136,9 +146,11 @@
                         <td class="row-header">Advanced</td>
                         <td>
                             <div class="eval-cell" id="agent-advanced">
-                                <div class="eval-cell-title" id="agent-advanced-name">Clinical Hallucination Guard</div>
+                                <div class="eval-cell-title" id="agent-advanced-name">LLM-as-a-Judge</div>
                                 <span class="eval-cell-badge badge-pass" id="agent-advanced-badge">Pending</span>
-                                <div class="eval-cell-result" id="agent-advanced-result">-</div>
+                                <div class="eval-cell-result" id="agent-advanced-result">
+                                    <a href="#" id="stream-judge-link" style="color: var(--primary); text-decoration: underline; font-weight: 600;">Streamable</a>
+                                </div>
                             </div>
                         </td>
                         <td>
