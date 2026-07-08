@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Server Observability (OpenTelemetry)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse-animation 1.5s infinite ease-in-out;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1.12);
+                opacity: 1;
+                box-shadow: 0 0 12px var(--success);
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+        }
+
+        .metric-cell {
+            padding: 16px;
+        }
+
+        .metric-title {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .metric-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .server-val {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .server-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .obs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .obs-table th {
+            text-align: left;
+            padding: 16px;
+            background-color: #F8FAFC;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--border-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .obs-table td {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        .obs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .progress-bar-small {
+            height: 6px;
+            background-color: #E2E8F0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .progress-bar-fill-small {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .refresh-btn {
+            background-color: white;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background-color: #F1F5F9;
+            border-color: #CBD5E1;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10"></path>
+                <path d="M12 20V4"></path>
+                <path d="M6 20v-6"></path>
+            </svg>
+            <h1>MCP Server Observability (OpenTelemetry)</h1>
+        </div>
+        <div>
+            <a href="#" id="back-btn" class="evals-btn" style="text-decoration: none; padding: 8px 16px; font-size: 0.9rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Evaluations
+            </a>
+        </div>
+    </header>
+
+    <main class="eval-dashboard">
+        <div class="eval-header-row">
+            <div style="display: flex; align-items: center;">
+                <span class="pulse-dot"></span>
+                <h2 style="margin: 0; font-size: 1.25rem; color: var(--text-main);">Live Metrics (Polling: 2s)</h2>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <button id="refreshBtn" class="refresh-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                    </svg>
+                    Refresh Now
+                </button>
+                <div style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;" id="lastUpdated">
+                    Connecting...
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Strip -->
+        <div class="eval-stats-strip">
+            <div class="eval-stat-card">
+                <label>Total Active Concurrency</label>
+                <span id="stat-total-concurrency">0</span>
+            </div>
+            <div class="eval-stat-card">
+                <label>Average Response Latency</label>
+                <span id="stat-avg-latency">-</span>
+            </div>
+            <div class="eval-stat-card">
+                <label>Total Telemetry Logs</label>
+                <span id="stat-total-requests">0</span>
+            </div>
+        </div>
+
+        <!-- Telemetry Table -->
+        <div class="eval-table-card">
+            <h2>System Observability Report</h2>
+            <table class="obs-table">
+                <thead>
+                    <tr>
+                        <th style="width: 28%; border-right: 1px solid var(--border-color);">Metric Detail</th>
+                        <th style="width: 24%;">EHR Server</th>
+                        <th style="width: 24%;">Pharmacy Server</th>
+                        <th style="width: 24%;">Billing Server</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tool Latency Row -->
+                    <tr>
+                        <td style="border-right: 1px solid var(--border-color);">
+                            <div class="metric-title">Tool Latency</div>
+                            <div class="metric-desc">How long does it take to fetch patient records and process requests? (Avg / Min / Max range)</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="ehr-latency-avg">-</div>
+                            <div class="server-sub" id="ehr-latency-range">-</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="pharmacy-latency-avg">-</div>
+                            <div class="server-sub" id="pharmacy-latency-range">-</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="billing-latency-avg">-</div>
+                            <div class="server-sub" id="billing-latency-range">-</div>
+                        </td>
+                    </tr>
+
+                    <!-- Error Tracking Row -->
+                    <tr>
+                        <td style="border-right: 1px solid var(--border-color);">
+                            <div class="metric-title">Error Tracking</div>
+                            <div class="metric-desc">Did the EHR or related API fail? How often? Displays total error occurrences and error rate.</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="ehr-errors">-</div>
+                            <div class="server-sub" id="ehr-error-rate">-</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="pharmacy-errors">-</div>
+                            <div class="server-sub" id="pharmacy-error-rate">-</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="billing-errors">-</div>
+                            <div class="server-sub" id="billing-error-rate">-</div>
+                        </td>
+                    </tr>
+
+                    <!-- Concurrency Row -->
+                    <tr>
+                        <td style="border-right: 1px solid var(--border-color);">
+                            <div class="metric-title">Concurrency</div>
+                            <div class="metric-desc">How many simultaneous requests can it handle? Shows current active and historical peak concurrent loads.</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="ehr-concurrency">-</div>
+                            <div class="server-sub" id="ehr-concurrency-peak">-</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="pharmacy-concurrency">-</div>
+                            <div class="server-sub" id="pharmacy-concurrency-peak">-</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="billing-concurrency">-</div>
+                            <div class="server-sub" id="billing-concurrency-peak">-</div>
+                        </td>
+                    </tr>
+
+                    <!-- Resource Usage Row -->
+                    <tr>
+                        <td style="border-right: 1px solid var(--border-color);">
+                            <div class="metric-title">Resource Usage</div>
+                            <div class="metric-desc">Is it leaking memory? Shows live memory consumption in MB and virtualized CPU core utilization.</div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="ehr-memory">-</div>
+                            <div class="server-sub" id="ehr-cpu">-</div>
+                            <div class="progress-bar-small">
+                                <div id="ehr-mem-bar" class="progress-bar-fill-small"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="pharmacy-memory">-</div>
+                            <div class="server-sub" id="pharmacy-cpu">-</div>
+                            <div class="progress-bar-small">
+                                <div id="pharmacy-mem-bar" class="progress-bar-fill-small"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="server-val" id="billing-memory">-</div>
+                            <div class="server-sub" id="billing-cpu">-</div>
+                            <div class="progress-bar-small">
+                                <div id="billing-mem-bar" class="progress-bar-fill-small"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="observability.js"></script>
+</body>
+
+</html>

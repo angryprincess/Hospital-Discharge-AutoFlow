@@ -45,27 +45,38 @@ function updateDashboard(data) {
     const evals = data.evaluations;
 
     // AI Agent cells
-    updateCell('agent-basic', evals.ai_agent.basic);
-    updateCell('agent-middling', evals.ai_agent.middling);
-    updateCell('agent-advanced', evals.ai_agent.advanced);
+    updateCell('agent-basic', evals.ai_agent.async_completion);
+    updateCell('agent-middling', evals.ai_agent.avg_latency);
+    updateCell('agent-advanced', evals.ai_agent.clinical_guard);
 
     // MCP Server cells
-    updateCell('mcp-basic', evals.mcp_server.basic);
-    updateCell('mcp-middling', evals.mcp_server.middling);
-    updateCell('mcp-advanced', evals.mcp_server.advanced);
+    updateCell('mcp-basic', evals.mcp_server.handling_ping);
+    updateCell('mcp-middling', evals.mcp_server.db_latency);
+    updateCell('mcp-stress', evals.mcp_server.concurrent_stress);
+    updateCell('mcp-advanced', evals.mcp_server.observability);
+
+    // Set hyperlink URL for Observe
+    const observeLink = document.getElementById('observe-link');
+    if (observeLink) {
+        observeLink.href = `observability.html?patient_id=${data.patient_id}`;
+    }
 
     // Compliance cells
-    updateCell('compliance-basic', evals.compliance.basic);
-    updateCell('compliance-middling', evals.compliance.middling);
-    updateCell('compliance-advanced', evals.compliance.advanced);
+    updateCell('compliance-basic', evals.compliance.rbac);
+    updateCell('compliance-middling', evals.compliance.audit_log);
+    updateCell('compliance-advanced', evals.compliance.phi_scanner);
 }
 
 function updateCell(cellPrefix, metric) {
     const badge = document.getElementById(`${cellPrefix}-badge`);
     const result = document.getElementById(`${cellPrefix}-result`);
 
-    // Set result text
-    result.textContent = metric.result;
+    if (!metric) return;
+
+    // Set result text (ignore if it's the advanced observability link which is in HTML)
+    if (cellPrefix !== 'mcp-advanced') {
+        result.textContent = metric.result;
+    }
 
     // Set badge text
     badge.textContent = metric.status === 'pass' ? 'PASS' : (metric.status === 'warning' ? 'WARN' : 'FAILED');
@@ -87,7 +98,7 @@ function setLoadingState(isLoading) {
     const elements = [
         'stat-patient-id', 'stat-exec-time', 'stat-tokens',
         'agent-basic-result', 'agent-middling-result', 'agent-advanced-result',
-        'mcp-basic-result', 'mcp-middling-result', 'mcp-advanced-result',
+        'mcp-basic-result', 'mcp-middling-result', 'mcp-stress-result',
         'compliance-basic-result', 'compliance-middling-result', 'compliance-advanced-result'
     ];
 
