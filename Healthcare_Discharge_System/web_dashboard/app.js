@@ -89,6 +89,24 @@ const patients = [
         diagnosis: "Hyperthyroidism (Graves Disease)",
         treatment: "Graves disease confirmed by TSH receptor antibodies. Carbimazole started. Heart rate controlled.",
         recommendation: "Hyperthyroidism managed with antithyroid drugs. TFT monitoring in 6 weeks."
+    },
+    {
+        id: "P011",
+        name: "Amit Patel",
+        age: 45,
+        ward: "General",
+        diagnosis: "Acute Gastroenteritis",
+        treatment: "Patient is stable but insists on leaving Against Medical Advice (AMA) due to urgent family matters. AMA form signed. Discharge processed under AMA protocol.",
+        recommendation: "Patient admitted for acute gastroenteritis. Improved with IV fluids. Requested discharge Against Medical Advice (AMA). Counseled on risks."
+    },
+    {
+        id: "P012",
+        name: "Devendra Shah",
+        age: 50,
+        ward: "General",
+        diagnosis: "Chronic Stable Angina",
+        treatment: "Patient stable. Chest pain controlled. Scheduled for outpatient stress test. Cleared for discharge.",
+        recommendation: "Stable angina managed medically. Patient cleared for discharge. Outpatient follow-up in 1 week."
     }
 ];
 
@@ -445,7 +463,7 @@ function showSuccessState(invoiceData) {
             </div>
             <div class="invoice-row total">
                 <span>Total Amount:</span>
-                <span>$${invoiceData.grand_total.toFixed(2)}</span>
+                <span>₹ ${invoiceData.grand_total.toFixed(2)}</span>
             </div>
         `;
     } else {

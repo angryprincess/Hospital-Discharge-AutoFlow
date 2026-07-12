@@ -9,7 +9,9 @@
     {"code": "GASTRO-PANC-007", "description": "Acute Pancreatitis Management", "base_charge": 35000, "ward": "Gastroenterology"},
     {"code": "GEN-DENG-008", "description": "Dengue Fever with Thrombocytopenia", "base_charge": 15000, "ward": "General"},
     {"code": "NEPH-CKD-009", "description": "Chronic Kidney Disease Management", "base_charge": 22000, "ward": "Nephrology"},
-    {"code": "ENDO-HYPER-010", "description": "Hyperthyroidism - Graves Disease", "base_charge": 20000, "ward": "Endocrinology"}
+    {"code": "ENDO-HYPER-010", "description": "Hyperthyroidism - Graves Disease", "base_charge": 20000, "ward": "Endocrinology"},
+    {"code": "GEN-AMA-011", "description": "Against Medical Advice - Unscheduled Discharge", "base_charge": 5000, "ward": "General"},
+    {"code": "GOV-RBAC-012", "description": "Clinical Governance Evaluation Case", "base_charge": 10000, "ward": "General"}
   ],
   "drug_catalog": [
     {"generic_name": "Paracetamol", "code": "DRUG-PARA-500", "unit_price": 2.5, "unit": "tablet", "gst_percent": 12, "hsn_code": "30049099"},

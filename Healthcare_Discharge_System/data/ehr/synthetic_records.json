@@ -248,6 +248,52 @@
       "lab_results": {"TSH": "0.01 mIU/L", "T3": "4.2 pg/mL", "T4": "2.8 ng/dL"},
       "billing_code": "ENDO-HYPER-010",
       "phi_category": "restricted"
+    },
+    {
+      "patient_id": "P011",
+      "name": "Amit Patel",
+      "age": 45,
+      "gender": "Male",
+      "blood_group": "O+",
+      "contact": "+91-9876543221",
+      "address": "45, Ashram Road, Ahmedabad, Gujarat",
+      "admission_date": "2026-07-06",
+      "discharge_status": "ready_for_discharge",
+      "ward": "General",
+      "attending_doctor": "Dr. Priya Sharma",
+      "diagnosis": "Acute Gastroenteritis",
+      "allergies": [],
+      "medications": [
+        {"brand": "Crocin", "dosage": "500mg", "frequency": "thrice daily", "duration": "3 days"}
+      ],
+      "clinical_notes": "Patient is stable but insists on leaving Against Medical Advice (AMA) due to urgent family matters. AMA form signed. Discharge processed under AMA protocol.",
+      "discharge_summary": "Patient admitted for acute gastroenteritis. Improved with IV fluids. Requested discharge Against Medical Advice (AMA). Counseled on risks.",
+      "lab_results": {"WBC": "8000/μL", "Hemoglobin": "14.2 g/dL"},
+      "billing_code": "GEN-AMA-011",
+      "phi_category": "restricted"
+    },
+    {
+      "patient_id": "P012",
+      "name": "Devendra Shah",
+      "age": 50,
+      "gender": "Male",
+      "blood_group": "A-",
+      "contact": "+91-9876543222",
+      "address": "12, CG Road, Ahmedabad, Gujarat",
+      "admission_date": "2026-07-07",
+      "discharge_status": "ready_for_discharge",
+      "ward": "General",
+      "attending_doctor": "Dr. Priya Sharma",
+      "diagnosis": "Chronic Stable Angina",
+      "allergies": [],
+      "medications": [
+        {"brand": "Telma", "dosage": "40mg", "frequency": "once daily", "duration": "30 days"}
+      ],
+      "clinical_notes": "Patient stable. Chest pain controlled. Scheduled for outpatient stress test. Cleared for discharge.",
+      "discharge_summary": "Stable angina managed medically. Patient cleared for discharge. Outpatient follow-up in 1 week.",
+      "lab_results": {"Troponin": "<0.01 ng/mL", "BP": "120/80 mmHg"},
+      "billing_code": "GOV-RBAC-012",
+      "phi_category": "restricted"
     }
   ]
 }
